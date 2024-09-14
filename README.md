@@ -1,3 +1,3 @@
-#todolist-go
+# todolist-go
 
-**TodoList full-stack Application: Backend implemented with GO.
+## TodoList full-stack Application: Backend implemented with GO.
