@@ -2,3 +2,4 @@ route -> /api/todos for getting and creating a user
 route -> /api/todos/:id for updating and deleting the user
 
 put or patch methods for updating a todo
+Generally use patch when you have to make small change to the existing data & put when you want to update entire data.
