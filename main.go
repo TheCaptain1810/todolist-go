@@ -23,7 +23,7 @@ type Todo struct {
 var collection *mongo.Collection
 
 func main() {
-	fmt.Println("Hello, World!")
+	fmt.Println("hello world")
 
 	if os.Getenv("ENV") != "production" {
 		// Load the .env file if not in production
@@ -54,6 +54,11 @@ func main() {
 
 	app := fiber.New()
 
+	// app.Use(cors.New(cors.Config{
+	// 	AllowOrigins: "http://localhost:5173",
+	// 	AllowHeaders: "Origin,Content-Type,Accept",
+	// }))
+
 	app.Get("/api/todos", getTodos)
 	app.Post("/api/todos", createTodo)
 	app.Patch("/api/todos/:id", updateTodo)
@@ -69,6 +74,7 @@ func main() {
 	}
 
 	log.Fatal(app.Listen("0.0.0.0:" + port))
+
 }
 
 func getTodos(c *fiber.Ctx) error {
@@ -95,7 +101,7 @@ func getTodos(c *fiber.Ctx) error {
 
 func createTodo(c *fiber.Ctx) error {
 	todo := new(Todo)
-	// {id:0, completed:false, body:""}
+	// {id:0,completed:false,body:""}
 
 	if err := c.BodyParser(todo); err != nil {
 		return err
@@ -132,6 +138,7 @@ func updateTodo(c *fiber.Ctx) error {
 	}
 
 	return c.Status(200).JSON(fiber.Map{"success": true})
+
 }
 
 func deleteTodo(c *fiber.Ctx) error {
